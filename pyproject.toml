@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hitherdither"
+description = "Dithering algorithms for arbitrary palettes in PIL"
+readme = "README.rst"
+authors = [
+    {name = "Henrik Blidh", email = "henrik.blidh@nedomkull.com"}
+]
+maintainers = [
+    {name = "tfuxu", email = "tfuxu@tutanota.com"}
+]
+requires-python = ">= 3.8"
+dependencies = [
+    "Pillow>=7.0.0",
+    "numpy>=1.18.0",
+    "typing-extensions>=4.0.0;python_version<'3.8'"
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion"
+]
+keywords = ["graphics", "image", "dithering", "pillow", "PIL"]
+license = {file = "COPYING"}
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/tfuxu/hitherdither"
+Repository = "https://github.com/tfuxu/hitherdither.git"
+
+[tool.setuptools.packages.find]
+exclude = ["docs*", "tests*", "examples*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "hitherdither.__version__.__version__" }
