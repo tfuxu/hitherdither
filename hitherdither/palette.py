@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 palette
 -----------
@@ -8,25 +6,15 @@ palette
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
-
 import numpy as np
 from PIL import Image
 from PIL.ImagePalette import ImagePalette
 
 from hitherdither.exceptions import PaletteCouldNotBeCreatedError
 
-try:
-    string_type = basestring
-except NameError:
-    string_type = str
-
 
 def hex2rgb(h):
-    if isinstance(h, string_type):
+    if isinstance(h, str):
         return hex2rgb(int(h[1:] if h.startswith("#") else h, 16))
     return (h >> 16) & 0xFF, (h >> 8) & 0xFF, h & 0xFF
 
@@ -93,7 +81,7 @@ class Palette(object):
             self.colours = _tmp.reshape((3, len(_tmp) // 3)).T
             self.hex = [rgb2hex(*colour) for colour in self]
         elif isinstance(data, (list, tuple)):
-            if isinstance(data[0], string_type):
+            if isinstance(data[0], str):
                 # Assume hex strings
                 self.hex = data
                 self.colours = np.array([hex2rgb(c) for c in data])
@@ -206,12 +194,8 @@ class Palette(object):
         pa_image = Image.new("P", cc.shape[::-1])
         pa_image.putpalette(self.colours.flatten().tolist())
         im = Image.fromarray(np.array(cc, "uint8")).im.convert("P", 0, pa_image.im)
-        try:
-            # Pillow >= 4
-            return pa_image._new(im)
-        except AttributeError:
-            # Pillow < 4
-            return pa_image._makeself(im)
+
+        return pa_image._new(im)
 
     def create_PIL_png_from_rgb_array(self, img_array):
         """Create a ``P`` PIL image from a RGB image with this palette.
@@ -230,12 +214,8 @@ class Palette(object):
         pa_image = Image.new("P", cc.shape[::-1])
         pa_image.putpalette(self.colours.flatten().tolist())
         im = Image.fromarray(np.array(cc, "uint8")).im.convert("P", 0, pa_image.im)
-        try:
-            # Pillow >= 4
-            return pa_image._new(im)
-        except AttributeError:
-            # Pillow < 4
-            return pa_image._makeself(im)
+
+        return pa_image._new(im)
 
     @staticmethod
     def hex2rgb(x):

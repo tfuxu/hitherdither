@@ -1,15 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+from pathlib import Path
 
-try:
-    import pathlib2 as pathlib
-except ImportError:
-    import pathlib
-
-try:
-    from urllib import urlopen
-except ImportError:
-    from urllib.request import urlopen
+from urllib.request import urlopen
 
 from PIL import Image
 
@@ -20,7 +11,7 @@ def scene():
     :return: The PIL image of the Chrono Cross scene.
 
     """
-    image_path = pathlib.Path(__file__).resolve().parent.joinpath("scene.png")
+    image_path = Path(__file__).resolve().parent.joinpath("scene.png")
     image_url = "http://bisqwit.iki.fi/jutut/kuvat/ordered_dither/scene.png"
     return _image(image_path, image_url)
 
@@ -32,7 +23,7 @@ def scene_undithered():
 
     """
     return _image(
-        pathlib.Path(__file__).resolve().parent.joinpath("scenenodither.png"),
+        Path(__file__).resolve().parent.joinpath("scenenodither.png"),
         "http://bisqwit.iki.fi/jutut/kuvat/ordered_dither/scenenodither.png",
     )
 
@@ -45,7 +36,7 @@ def scene_bayer0():
 
     """
     return _image(
-        pathlib.Path(__file__).resolve().parent.joinpath("scenebayer0.png"),
+        Path(__file__).resolve().parent.joinpath("scenebayer0.png"),
         "http://bisqwit.iki.fi/jutut/kuvat/ordered_dither/scenebayer0.png",
     )
 

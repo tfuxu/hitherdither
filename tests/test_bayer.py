@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 :mod:`test_bayer`
 =======================
@@ -8,11 +6,6 @@
 Created on 2016-09-12, 13:35
 
 """
-
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
 
 import pytest
 import numpy as np
