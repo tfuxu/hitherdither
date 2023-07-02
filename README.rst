@@ -4,12 +4,12 @@ hitherdither
 |Build Status| |Coverage Status|
 
 A package inspired by [1]_, implementing dithering algorithms that can be used with 
-`PIL/Pillow <https://pillow.readthedocs.io/en/3.3.x/>`_. 
+`PIL/Pillow <https://pillow.readthedocs.io/en/stable/>`_. 
 
 Description
 -----------
 
-This module is a small extension to `PIL/Pillow <https://pillow.readthedocs.io/en/3.3.x/>`_, adding
+This module is a small extension to `PIL/Pillow <https://pillow.readthedocs.io/en/stable/>`_, adding
 a more managable palette object and several dithering algorithms:
 
 * Error diffusion dithering
@@ -39,7 +39,7 @@ Installation
 
 ::
 
-    pip install git+https://www.github.com/hbldh/hitherdither
+    pip install git+https://www.github.com/tfuxu/hitherdither
 
 Usage
 -----
